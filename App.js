@@ -13,10 +13,10 @@ const pattern = [1000, 2000, 3000, 4000];
 
 export default class extends Component {
   state = {
-    minutes: 4,
-    count: 4 * min,
-    isWorkTimer: false,
-    isPause: true,
+    minutes: 0,
+    count: 1 * min,
+    isOn: false,
+    isPaused: true,
     isHidden: true
   }
 
@@ -29,6 +29,14 @@ export default class extends Component {
 
     return `${ourMinutes} ${ourSeconds}`;
 
+  }
+
+  softEgg = () => {
+    this.setState(prevState => ({
+      isOn: true,
+      minutes: 4,
+      count: 4 * min
+    }))
   }
 
   // state = {
@@ -90,18 +98,18 @@ export default class extends Component {
               timeTxtColor={'white'} //min sec
               size={25}
             /> */}
-            <View style={styles.timeContainer}>
-              <Text style={styles.title}>{this.state.count}</Text>
-            </View>
+
 
             <Text style={styles.text}>soft boil</Text> 
             <Button 
               title="^"
-              onPress={()=>this.showTimer()}/>
+              onPress={()=>this.softEgg()}/>
               {/* style={styles.text}
               title="soft"
               onPress={() => console.log('hi')}>soft */}
-            
+            <View style={styles.timeContainer}>
+              <Text style={styles.title}>{this.clock(this.state.count)}</Text>
+            </View>
           </View>
           <View style={styles.slide}>
             <Text style={styles.text}>medium</Text> 
@@ -152,8 +160,12 @@ const styles = {
     width,
     height,
   },
-  countdown: {
-    
+  timeContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    // height: 39,
+    // width: 34
   }
 }
 
