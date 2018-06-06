@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Image, Dimensions, Text, Button } from 'react-native'
 import Swiper from 'react-native-swiper'
 import { createStackNavigator } from 'react-navigation';
+import CountdownCircle from 'react-native-countdown-circle';
 
 const { width, height } = Dimensions.get('window');
 
@@ -11,8 +12,7 @@ export default class extends Component {
       <View style={styles.container}>
         
         <Swiper 
-         //style={styles.wrapper}
-          
+          style={styles.wrapper}
           dot={<View style={{
             backgroundColor: '#FEF9E7', 
             width: 13, 
@@ -34,7 +34,17 @@ export default class extends Component {
           }}
           loop={false}>
           <View style={styles.slide}>
-         
+            <CountdownCircle
+              seconds={4}
+              radius={65} 
+              borderWidth={3}
+              color="#E8F8F5"
+              bgColor="white"
+              shadowColor="white"
+              textStyle={{fontSize:20}}
+              onTimeElapsed={()=>console.log('HERRO')}
+
+            />
             <Text style={styles.text}>soft boil</Text> 
             <Button 
               title="^"
@@ -74,11 +84,7 @@ export default class extends Component {
         </Swiper>
       
         
-        {/* <Button 
-          // style={styles.button}
-          onPress={console.log("working")}
-          title="BUTTON"
-        /> */}
+
       
       </View>
     )
@@ -100,10 +106,6 @@ const styles = {
     fontWeight: 'bold',
     fontSize: 18,
     marginTop: 200,
-  },
-  button: {
-    fontSize:50,
-    backgroundColor: 'blue'
   },
   image: {
     width,
