@@ -11,12 +11,15 @@ const duration = 10000;
 
 
 export default class extends Component {
-  state = {
-    minutes: null,
-    count: null,
-    isWorkTimer: true,
-    isPaused: true,
-    isHidden: true
+  constructor() {
+    super()
+    this.state = {
+      minutes: null,
+      count: null,
+      isWorkTimer: true,
+      isPaused: true,
+      isHidden: true
+    }
   }
 
   clock = (time) => {
@@ -43,6 +46,10 @@ export default class extends Component {
       minutes: 4,
       count: 4 * min
     }))
+    clearInterval(this.intervalId);
+    if(this.state.isPaused) {
+      this.intervalId = setInterval(this.countDown, 1000);
+    }
   }
 
   mediumEgg = () => {
@@ -52,6 +59,10 @@ export default class extends Component {
       minutes: 7,
       count: 7 * min
     }))
+    clearInterval(this.intervalId);
+    if(this.state.isPaused) {
+      this.intervalId = setInterval(this.countDown, 1000);
+    }
   }
 
   hardEgg = () => {
@@ -61,6 +72,10 @@ export default class extends Component {
       minutes: 11,
       count: 11 * min
     }))
+    clearInterval(this.intervalId);
+    if(this.state.isPaused) {
+      this.intervalId = setInterval(this.countDown, 1000);
+    }
   }
   // state = {
   //   isHidden: true
