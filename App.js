@@ -3,6 +3,7 @@ import { View, Image, Dimensions, Text, Button } from 'react-native'
 import Swiper from 'react-native-swiper'
 import { createStackNavigator } from 'react-navigation';
 import CountdownCircle from 'react-native-countdown-circle';
+import ReactCountdownClock from 'react-countdown-clock';
 
 const { width, height } = Dimensions.get('window');
 
@@ -36,7 +37,7 @@ export default class extends Component {
           <View style={styles.slide}>
             <CountdownCircle
               seconds={4}
-              radius={65} 
+              radius={70} 
               borderWidth={3}
               color="#E8F8F5"
               bgColor="white"
@@ -45,6 +46,14 @@ export default class extends Component {
               onTimeElapsed={()=>console.log('HERRO')}
 
             />
+
+            {/* <ReactCountdownClock 
+                     secondsReact ={6}
+                     color="#000"
+                     alpha={0.9}
+                     size={300}
+                     onComplete={()=>console.log('round one')} /> */}
+
             <Text style={styles.text}>soft boil</Text> 
             <Button 
               title="^"
