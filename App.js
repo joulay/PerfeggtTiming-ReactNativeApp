@@ -8,20 +8,19 @@ import CountDown from 'react-native-countdown-component';
 const { width, height } = Dimensions.get('window');
 const min = 60;
 const duration = 10000;
-const pattern = [1000, 2000, 3000, 4000];
 
 
 export default class extends Component {
   state = {
-    minutes: 0,
-    count: 1 * min,
-    isOn: false,
+    minutes: null,
+    count: null,
+    isWorkTimer: true,
     isPaused: true,
     isHidden: true
   }
 
   clock = (time) => {
-    const minutes = Math.floor(time/60);
+    const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
 
     const ourMinutes = minutes > 9 ? minutes : `0${minutes}`;
@@ -31,14 +30,38 @@ export default class extends Component {
 
   }
 
+  countDown = () => {
+    this.setState(prevState => ({
+      count: prevState.count - 1,
+    }))
+  }
+
   softEgg = () => {
     this.setState(prevState => ({
-      isOn: true,
+      isWorkTimer: !prevState.isWorkTimer,
+      isHidden: false,
       minutes: 4,
       count: 4 * min
     }))
   }
 
+  mediumEgg = () => {
+    this.setState(prevState => ({
+      isWorkTimer: !prevState.isWorkTimer,
+      isHidden: false,
+      minutes: 7,
+      count: 7 * min
+    }))
+  }
+
+  hardEgg = () => {
+    this.setState(prevState => ({
+      isWorkTimer: !prevState.isWorkTimer,
+      isHidden: false,
+      minutes: 11,
+      count: 11 * min
+    }))
+  }
   // state = {
   //   isHidden: true
   // }
@@ -99,11 +122,16 @@ export default class extends Component {
               size={25}
             /> */}
 
-
             <Text style={styles.text}>soft boil</Text> 
-            <Button 
+            {/* <Button 
               title="^"
-              onPress={()=>this.softEgg()}/>
+              onPress={this.softEgg}
+              disabled={!this.state.isWorkTimer}  
+            /> */}
+            <Button
+              onPress={this.softEgg}
+              title={this.state.isPaused ? 'start' : 'pause'} 
+            />
               {/* style={styles.text}
               title="soft"
               onPress={() => console.log('hi')}>soft */}
@@ -120,13 +148,17 @@ export default class extends Component {
             /> */}
             <Button 
               title=">"
-              onPress={()=>console.log('hi')}/>
+              onPress={this.mediumEgg}
+              disabled={!this.state.isWorkTimer} 
+            />
           </View>
           <View>
-            <Text style={styles.text}>hard</Text>
+            <Text style={styles.text}>hard boiled</Text>
             <Button 
               title=">"
-              onPress={()=>console.log('hi')}/>
+              onPress={this.hardEgg}
+              disabled={!this.state.isWorkTimer} 
+            />
           </View>
         
 
