@@ -3,11 +3,22 @@ import { View, Image, Dimensions, Text, Button } from 'react-native'
 import Swiper from 'react-native-swiper'
 import { createStackNavigator } from 'react-navigation';
 import CountdownCircle from 'react-native-countdown-circle';
-import ReactCountdownClock from 'react-countdown-clock';
+import CountDown from 'react-native-countdown-component';
 
 const { width, height } = Dimensions.get('window');
+  state = {
+    isHidden: true
+  }
+
+  showTimer = () => {
+    this.setState({
+      isHidden: false
+    })
+  }
+
 
 export default class extends Component {
+
   render () {
     return (
       <View style={styles.container}>
@@ -36,7 +47,8 @@ export default class extends Component {
           loop={false}>
           <View style={styles.slide}>
             <CountdownCircle
-              seconds={4}
+              style={styles.countdown}
+              seconds={5}
               radius={70} 
               borderWidth={3}
               color="#E8F8F5"
@@ -44,20 +56,24 @@ export default class extends Component {
               shadowColor="white"
               textStyle={{fontSize:20}}
               onTimeElapsed={()=>console.log('HERRO')}
-
+            />  
+            <CountDown
+              until={10}
+              onFinish={() => alert('')}
+              onPress={() => alert('hello')}
+              size={20}
+              timeToShow={['M','S']}
+              digitBgColor={'#F9E79F'}
+              digitTxtColor={'white'} //time
+              timeTxtColor={'white'} //min sec
+              size={25}
             />
 
-            {/* <ReactCountdownClock 
-                     secondsReact ={6}
-                     color="#000"
-                     alpha={0.9}
-                     size={300}
-                     onComplete={()=>console.log('round one')} /> */}
 
             <Text style={styles.text}>soft boil</Text> 
             <Button 
               title="^"
-              onPress={()=>console.log('hi')}/>
+              onPress={()=>this.showTimer()}/>
               {/* style={styles.text}
               title="soft"
               onPress={() => console.log('hi')}>soft */}
@@ -80,8 +96,7 @@ export default class extends Component {
               title=">"
               onPress={()=>console.log('hi')}/>
           </View>
-          
-            {/* <Text style={styles.text}>hard</Text>  */}
+        
             
             {/* <Image
               style={styles.image}
@@ -91,9 +106,7 @@ export default class extends Component {
          
 
         </Swiper>
-      
-        
-
+        {this.state.isHidden ?  "" : <Countdown />}      
       
       </View>
     )
@@ -119,6 +132,9 @@ const styles = {
   image: {
     width,
     height,
+  },
+  countdown: {
+    
   }
 }
 
