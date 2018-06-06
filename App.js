@@ -20,7 +20,16 @@ export default class extends Component {
     isHidden: true
   }
 
+  clock = (time) => {
+    const minutes = Math.floor(time/60);
+    const seconds = Math.floor(time % 60);
 
+    const ourMinutes = minutes > 9 ? minutes : `0${minutes}`;
+    const ourSeconds = seconds > 9 ? seconds : `0${seconds}`;
+
+    return `${ourMinutes} ${ourSeconds}`;
+
+  }
 
   // state = {
   //   isHidden: true
