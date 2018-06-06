@@ -6,18 +6,29 @@ import CountdownCircle from 'react-native-countdown-circle';
 import CountDown from 'react-native-countdown-component';
 
 const { width, height } = Dimensions.get('window');
-  state = {
-    isHidden: true
-  }
-
-  showTimer = () => {
-    this.setState({
-      isHidden: false
-    })
-  }
+const min = 60;
+const duration = 10000;
+const pattern = [1000, 2000, 3000, 4000];
 
 
 export default class extends Component {
+  state = {
+    minutes: 5,
+    count: 5 * min,
+    isWorkTimer: false,
+    isPause: true
+  }
+
+
+  // state = {
+  //   isHidden: true
+  // }
+  // showTimer = () => {
+  //   this.setState({
+  //     isHidden: false
+  //   })
+  // }
+
 
   render () {
     return (
@@ -46,7 +57,7 @@ export default class extends Component {
           }}
           loop={false}>
           <View style={styles.slide}>
-            <CountdownCircle
+            {/* <CountdownCircle
               style={styles.countdown}
               seconds={5}
               radius={70} 
@@ -56,8 +67,8 @@ export default class extends Component {
               shadowColor="white"
               textStyle={{fontSize:20}}
               onTimeElapsed={()=>console.log('HERRO')}
-            />  
-            <CountDown
+            />   */}
+            {/* <CountDown
               until={10}
               onFinish={() => alert('')}
               onPress={() => alert('hello')}
@@ -67,7 +78,7 @@ export default class extends Component {
               digitTxtColor={'white'} //time
               timeTxtColor={'white'} //min sec
               size={25}
-            />
+            /> */}
 
 
             <Text style={styles.text}>soft boil</Text> 
@@ -81,14 +92,14 @@ export default class extends Component {
           </View>
           <View style={styles.slide}>
             <Text style={styles.text}>medium</Text> 
+            {/* <Image
+              style={styles.image}
+              source={require('./img/2.jpg')}
+              resizeMode='cover'
+            /> */}
             <Button 
               title=">"
               onPress={()=>console.log('hi')}/>
-            {/* <MediumEgg 
-              style={styles.text}
-              onPress={() => ('MediumEgg')}>
-              <Text style={styles.text}>medium</Text> 
-            </MediumEgg> */}
           </View>
           <View>
             <Text style={styles.text}>hard</Text>
@@ -97,16 +108,11 @@ export default class extends Component {
               onPress={()=>console.log('hi')}/>
           </View>
         
-            
-            {/* <Image
-              style={styles.image}
-              source={require('./img/2.jpg')}
-              resizeMode='cover'
-            /> */}
+
          
 
         </Swiper>
-        {this.state.isHidden ?  "" : <Countdown />}      
+        {/* {this.state.isHidden ?  "" : <Countdown />}       */}
       
       </View>
     )
