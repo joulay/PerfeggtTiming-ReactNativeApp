@@ -37,7 +37,7 @@ export default class extends Component {
          
             <Text style={styles.text}>soft boil</Text> 
             <Button 
-              title=">"
+              title="^"
               onPress={()=>console.log('hi')}/>
               {/* style={styles.text}
               title="soft"
