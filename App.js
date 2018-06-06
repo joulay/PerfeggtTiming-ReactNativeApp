@@ -13,11 +13,13 @@ const pattern = [1000, 2000, 3000, 4000];
 
 export default class extends Component {
   state = {
-    minutes: 5,
-    count: 5 * min,
+    minutes: 4,
+    count: 4 * min,
     isWorkTimer: false,
-    isPause: true
+    isPause: true,
+    isHidden: true
   }
+
 
 
   // state = {
@@ -79,7 +81,9 @@ export default class extends Component {
               timeTxtColor={'white'} //min sec
               size={25}
             /> */}
-
+            <View style={styles.timeContainer}>
+              <Text style={styles.title}>{this.state.count}</Text>
+            </View>
 
             <Text style={styles.text}>soft boil</Text> 
             <Button 
