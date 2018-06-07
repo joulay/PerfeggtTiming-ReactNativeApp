@@ -61,7 +61,10 @@ export default class extends Component {
   countDown = () => {
     if(!this.state.softCount) {
       this.startVibrating();
-      // this.alert("");
+      alert("");  
+      this.setState( () => ({
+        count: 0
+      }))
     }
     this.setState(prevState => ({
       softCount: prevState.softCount - 1,
@@ -112,7 +115,6 @@ export default class extends Component {
         this.intervalId = setInterval(function(){countDown(hardCount)}, 1000);
       }
     }
-    
     return;
   }
 
@@ -230,10 +232,11 @@ export default class extends Component {
               <Button 
                 title={this.state.restart ? 'start' : 'restart'} 
                 onPress={this.mediumEgg}
-                
               />
+
+
               <View style={styles.timeContainer}>
-                <Text style={styles.title}>{this.clock(this.state.mediumCount)}</Text>
+                <Text style={styles.title}>{this.clock(this.state.hardCount)}</Text>
               </View>
             </View>
             <View style={styles.slide}>
