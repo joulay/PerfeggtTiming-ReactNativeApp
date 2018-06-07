@@ -62,6 +62,9 @@ export default class extends Component {
       this.startVibrating();
       clearInterval(this.softIntervalId);
       alert("soft");
+      this.setState({
+        softCount:null,
+      })
       return false;  
     }
     this.setState(prevState => ({
@@ -72,6 +75,9 @@ export default class extends Component {
       this.startVibrating();
       clearInterval(this.mediumIntervalId);
       alert("med");
+      this.setState({
+        mediumCount:null,
+      })
       return false;  
     }
     this.setState(prevState => ({
@@ -82,7 +88,10 @@ export default class extends Component {
       this.startVibrating();
       clearInterval(this.hardIntervalId);
       alert("h");
-      return false;  
+      this.setState({
+        hardCount:null,
+      }) 
+      return false; 
     }
     this.setState(prevState => ({
       hardCount: prevState.hardCount - 1,
@@ -128,8 +137,8 @@ export default class extends Component {
       isWorkTimer: !prevState.isWorkTimer,
       isHidden: false,
       restart: !prevState.restart,
-      softMinutes: .1,
-      softCount: .1 * min
+      softMinutes: .05,
+      softCount: .05 * min
     }))
     this.setTimer.eggType = 'soft';
     setTimeout(this.setTimer, 100)
@@ -162,10 +171,10 @@ export default class extends Component {
 
   render () {
     return (
-      // <TouchableOpacity 
-      //   onPress={this.stopVibration} 
-      //   disabled={!this.state.isVibrating} 
-      //   style={styles.container}>
+      <TouchableOpacity 
+        onPress={this.stopVibration} 
+        disabled={!this.state.isVibrating} 
+        style={styles.container}>
 
        <View style={styles.container}>
           
@@ -275,7 +284,7 @@ export default class extends Component {
           
         
         </View>
-      // </TouchableOpacity>
+      </TouchableOpacity>
     )
   }
 }
