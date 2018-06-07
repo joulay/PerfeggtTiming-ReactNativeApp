@@ -145,10 +145,11 @@ export default class extends Component {
     this.setState(prevState => ({
       isWorkTimer: !prevState.isWorkTimer,
       isHidden: false,
+      restart: !prevState.restart,
       hardMinutes: 11,
       hardCount: 11 * min
     }))
-    this.setTimer.eggType="hard";
+    this.setTimer.eggType='hard';
     setTimeout(this.setTimer, 100)
   }
 
