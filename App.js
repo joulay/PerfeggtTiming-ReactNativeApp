@@ -78,7 +78,7 @@ export default class extends Component {
       mediumCount: prevState.mediumCount - 1,
     }))
 
-    if(!this.state.hardCount) {
+    if(this.state.hardCount===0) {
       this.startVibrating();
       clearInterval(this.hardIntervalId);
       alert("");
