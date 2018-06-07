@@ -69,12 +69,18 @@ export default class extends Component {
     }))
     if(!this.state.mediumCount) {
       this.startVibrating();
+      clearInterval(this.mediumIntervalId);
+      alert("");
+      return false;  
     }
     this.setState(prevState => ({
       mediumCount: prevState.mediumCount - 1,
     }))
     if(!this.state.hardCount) {
       this.startVibrating();
+      clearInterval(this.hardIntervalId);
+      alert("");
+      return false;  
     }
     this.setState(prevState => ({
       hardCount: prevState.hardCount - 1,
@@ -241,10 +247,8 @@ export default class extends Component {
                 accessibilityLabel="medium boiled timer"
                 
               />
-
-
               <View style={styles.timeContainer}>
-                <Text style={styles.title}>{this.clock(this.state.hardCount)}</Text>
+                {this.state.mediumCount && <Text style={styles.title}>{this.clock(this.state.hardCount)}</Text>}
               </View>
             </View>
             <View style={styles.slide}>
@@ -264,7 +268,6 @@ export default class extends Component {
               </View>
             </View>
           
-            {/* {this.state.isHidden ? "" : <Button }      */}
           
 
           </Swiper>
