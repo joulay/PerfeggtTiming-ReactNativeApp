@@ -157,19 +157,21 @@ export default class extends Component {
             <Button 
               title={this.state.restart ? 'start' : 'restart'} 
               onPress={this.mediumEgg}
-              disabled={!this.state.isWorkTimer} 
+              
             />
             <View style={styles.timeContainer}>
               <Text style={styles.title}>{this.clock(this.state.count)}</Text>
             </View>
           </View>
           <View>
-            <Text style={styles.text}>hard boiled</Text>
-            <Button 
-              title={this.state.restart ? 'start' : 'restart'} 
+            <Text style={styles.text}>hard boiled</Text> 
+            <Button
               onPress={this.hardEgg}
-              disabled={!this.state.isWorkTimer} 
+              title={this.state.restart ? 'start' : 'restart'} 
             />
+              {/* style={styles.text}
+              title="soft"
+              onPress={() => console.log('hi')}>soft */}
             <View style={styles.timeContainer}>
               <Text style={styles.title}>{this.clock(this.state.count)}</Text>
             </View>
@@ -179,7 +181,7 @@ export default class extends Component {
          
 
         </Swiper>
-        {/* {this.state.isHidden ?  "" : <Countdown />}       */}
+        {/* {this.state.isHidden ?  "" : }       */}
       
       </View>
     )
