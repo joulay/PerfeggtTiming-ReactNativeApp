@@ -5,7 +5,6 @@ import { createStackNavigator } from 'react-navigation';
 import CountdownCircle from 'react-native-countdown-circle';
 import CountDown from 'react-native-countdown-component';
 import { vibrate } from './utils/vibrate'
-
 const { width, height } = Dimensions.get('window');
 const min = 60;
 const DURATION = 10000
@@ -210,25 +209,28 @@ export default class extends Component {
                 size={25}
               /> */}
 
-              <Text style={styles.text}>soft boiled</Text> 
+              <Image
+               style={styles.image}
+               source={require('./img/1.png')}
+               resizeMode='center'
+             />
+              <Text style={styles.text}>soft</Text> 
               <Button
                 onPress={this.softEgg}
                 title={this.state.restart ? 'start' : 'restart'} 
               />
-                {/* style={styles.text}
-                title="soft"
-                onPress={() => console.log('hi')}>soft */}
               <View style={styles.timeContainer}>
                 <Text style={styles.title}>{this.clock(this.state.softCount)}</Text>
               </View>
             </View>
             <View style={styles.slide}>
-              <Text style={styles.text}>medium</Text> 
-              {/* <Image
+              {/* <Text style={styles.text}>medium</Text>  */}
+              <Image
                 style={styles.image}
-                source={require('./img/2.jpg')}
-                resizeMode='cover'
-              /> */}
+                source={require('./img/2.png')}
+                resizeMode='center'
+              />
+               <Text style={styles.text}>med</Text> 
               <Button 
                 title={this.state.restart ? 'start' : 'restart'} 
                 onPress={this.mediumEgg}
@@ -240,7 +242,12 @@ export default class extends Component {
               </View>
             </View>
             <View style={styles.slide}>
-              <Text style={styles.text}>hard boiled</Text> 
+            <Image
+               style={styles.image}
+               source={require('./img/3.png')}
+               resizeMode='center'
+             />
+              <Text style={styles.text}>hard</Text> 
               <Button
                 onPress={this.hardEgg}
                 title={this.state.restart ? 'start' : 'restart'} 
@@ -277,13 +284,15 @@ const styles = {
   },
   text: {
     textAlign: 'center',
-    fontWeight: 'bold',
     fontSize: 18,
     marginTop: 200,
   },
   image: {
-    width,
-    height,
+    // alignItems: 'center',
+    // width,
+    // height,
+    alignItems: 'center'
+    
   },
   timeContainer: {
     flex: 1,
