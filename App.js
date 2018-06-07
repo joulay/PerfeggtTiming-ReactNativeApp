@@ -15,7 +15,7 @@ export default class extends Component {
   constructor() {
     super()
     this.state = {
-      softCount: 1,
+      softCount: 0,
       mediumCount: 1,
       hardCount: 1,
       softMinute: 1,
@@ -60,10 +60,9 @@ export default class extends Component {
   countDown = () => {
     if(!this.state.softCount) {
       this.startVibrating();
-      alert("");  
-      this.setState( () => ({
-        count: 0
-      }))
+      clearInterval(this.softIntervalId);
+      alert("");
+      return false;  
     }
     this.setState(prevState => ({
       softCount: prevState.softCount - 1,
@@ -91,27 +90,27 @@ export default class extends Component {
   setTimer = () => {
     console.log(this.setTimer.eggType)
     if(this.setTimer.eggType === 'soft') {
-      clearInterval(this.intervalId);
+      clearInterval(this.softIntervalId);
       if(!this.state.restart) {
         const softCount = this.state.softCount;
         const countDown = this.countDown;
-        this.intervalId = setInterval(function(){countDown(softCount)}, 1000);
+        this.softIntervalId = setInterval(function(){countDown(softCount)}, 1000);
       }
     } 
     if (this.setTimer.eggType === 'medium') {
-      clearInterval(this.intervalId);
+      clearInterval(this.mediumIntervalId);
       if(!this.state.restart) {
         const mediumCount = this.state.mediumCount;
         const countDown= this.countDown;
-        this.intervalId = setInterval(function(){countDown(mediumCount)}, 1000);
+        this.mediumIntervalId = setInterval(function(){countDown(mediumCount)}, 1000);
       }
     }
     if (this.setTimer.eggType === 'hard') {
-      clearInterval(this.intervalId);
+      clearInterval(this.hardIntervalId);
       if(!this.state.restart) {
         const hardCount = this.state.hardCount;
         const countDown= this.countDown;
-        this.intervalId = setInterval(function(){countDown(hardCount)}, 1000);
+        this.hardIntervalId = setInterval(function(){countDown(hardCount)}, 1000);
       }
     }
     return;
@@ -209,11 +208,12 @@ export default class extends Component {
                 size={25}
               /> */}
 
+
               <Image
-               style={styles.image}
-               source={require('./img/1.png')}
-               resizeMode='center'
-             />
+                style={styles.image}
+                source={require('./img/1.png')}
+                resizeMode='center'
+              />
               <Text style={styles.text}>soft</Text> 
               <Button style={styles.button}
                 onPress={this.softEgg}
@@ -221,11 +221,14 @@ export default class extends Component {
                 accessibilityLabel="soft boiled timer"
               />
               <View style={styles.timeContainer}>
-                <Text style={styles.title}>{this.clock(this.state.softCount)}</Text>
+                {this.state.softCount && <Text style={styles.title}>{this.clock(this.state.softCount)}</Text>}
               </View>
             </View>
+
+            
+
             <View style={styles.slide}>
-              {/* <Text style={styles.text}>medium</Text>  */}
+
               <Image
                 style={styles.image}
                 source={require('./img/2.png')}
@@ -256,19 +259,16 @@ export default class extends Component {
                 title={this.state.restart ? 'start' : 'restart'} 
                 accessibilityLabel="hard boiled timer"
               />
-                {/* style={styles.text}
-                title="soft"
-                onPress={() => console.log('hi')}>soft */}
               <View style={styles.timeContainer}>
                 <Text style={styles.title}>{this.clock(this.state.hardCount)}</Text>
               </View>
             </View>
           
-                
+            {/* {this.state.isHidden ? "" : <Button }      */}
           
 
           </Swiper>
-          {/* {this.state.isHidden ?  "" : }       */}
+          
         
         </View>
       </TouchableOpacity>
@@ -289,6 +289,7 @@ const styles = {
   text: {
     textAlign: 'center',
     fontSize: 10,
+    color: '#D5DBDB'
     // marginTop: 200,
   },
   image: {
