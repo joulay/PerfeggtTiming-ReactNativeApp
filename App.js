@@ -15,9 +15,9 @@ export default class extends Component {
   constructor() {
     super()
     this.state = {
-      softCount: 0,
-      mediumCount: 1,
-      hardCount: 1,
+      softCount: null,
+      mediumCount: null,
+      hardCount: null,
       softMinute: 1,
       mediumMinute: 1,
       hardMinute: 1,
@@ -58,24 +58,26 @@ export default class extends Component {
   }
 
   countDown = () => {
-    if(!this.state.softCount) {
+    if(this.state.softCount===0) {
       this.startVibrating();
       clearInterval(this.softIntervalId);
-      alert("");
+      alert("soft");
       return false;  
     }
     this.setState(prevState => ({
       softCount: prevState.softCount - 1,
     }))
-    if(!this.state.mediumCount) {
+
+    if(this.state.mediumCount===0) {
       this.startVibrating();
       clearInterval(this.mediumIntervalId);
-      // alert("");
+      alert("");
       return false;  
     }
     this.setState(prevState => ({
       mediumCount: prevState.mediumCount - 1,
     }))
+
     if(!this.state.hardCount) {
       this.startVibrating();
       clearInterval(this.hardIntervalId);
@@ -94,7 +96,6 @@ export default class extends Component {
   }
 
   setTimer = () => {
-    console.log(this.setTimer.eggType)
     if(this.setTimer.eggType === 'soft') {
       clearInterval(this.softIntervalId);
       if(!this.state.restart) {
@@ -140,8 +141,8 @@ export default class extends Component {
       isWorkTimer: !prevState.isWorkTimer,
       isHidden: false,
       restart: !prevState.restart,
-      mediumMinutes: 7,
-      mediumCount: 7 * min
+      mediumMinutes: .2,
+      mediumCount: .2 * min
     }))
     this.setTimer.eggType='medium';
     setTimeout(this.setTimer, 100)
@@ -152,8 +153,8 @@ export default class extends Component {
       isWorkTimer: !prevState.isWorkTimer,
       isHidden: false,
       restart: !prevState.restart,
-      hardMinutes: 11,
-      hardCount: 11 * min
+      hardMinutes: .05,
+      hardCount: .05 * min
     }))
     this.setTimer.eggType='hard';
     setTimeout(this.setTimer, 100)
@@ -248,7 +249,7 @@ export default class extends Component {
                 
               />
               <View style={styles.timeContainer}>
-                {this.state.mediumCount && <Text style={styles.title}>{this.clock(this.state.hardCount)}</Text>}
+                {this.state.mediumCount && <Text style={styles.title}>{this.clock(this.state.mediumCount)}</Text>}
               </View>
             </View>
             <View style={styles.slide}>
@@ -264,7 +265,7 @@ export default class extends Component {
                 accessibilityLabel="hard boiled timer"
               />
               <View style={styles.timeContainer}>
-                <Text style={styles.title}>{this.clock(this.state.hardCount)}</Text>
+                {this.state.hardCount && <Text style={styles.title}>{this.clock(this.state.hardCount)}</Text>}
               </View>
             </View>
           
