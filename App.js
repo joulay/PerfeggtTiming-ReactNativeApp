@@ -58,7 +58,7 @@ export default class extends Component {
   }
 
   countDown = () => {
-    if(this.state.softCount===0) {
+    if(this.state.softCount === 0) {
       this.startVibrating();
       clearInterval(this.softIntervalId);
       alert("soft");
@@ -67,11 +67,14 @@ export default class extends Component {
       })
       return false;  
     }
-    this.setState(prevState => ({
-      softCount: prevState.softCount - 1,
-    }))
-
-    if(this.state.mediumCount===0) {
+    console.log('countdown',this.state)
+    if(this.setTimer.eggType === 'soft') {
+      this.setState(prevState => ({
+        softCount: prevState.softCount - 1,
+      }))
+    }
+    
+    if(this.state.mediumCount === 0) {
       this.startVibrating();
       clearInterval(this.mediumIntervalId);
       alert("med");
@@ -80,11 +83,13 @@ export default class extends Component {
       })
       return false;  
     }
-    this.setState(prevState => ({
-      mediumCount: prevState.mediumCount - 1,
-    }))
+    if(this.setTimer.eggType === 'medium') {
+      this.setState(prevState => ({
+        mediumCount: prevState.mediumCount - 1,
+     }))
+    }
 
-    if(this.state.hardCount===0) {
+    if(this.state.hardCount === 0) {
       this.startVibrating();
       clearInterval(this.hardIntervalId);
       alert("h");
@@ -93,9 +98,11 @@ export default class extends Component {
       }) 
       return false; 
     }
-    this.setState(prevState => ({
-      hardCount: prevState.hardCount - 1,
-    }))
+    if(this.setTimer.eggType === 'hard') {
+      this.setState(prevState => ({
+        hardCount: prevState.hardCount - 1,
+      }))
+    }
   }
 
   reset = () => {
@@ -108,6 +115,7 @@ export default class extends Component {
     if(this.setTimer.eggType === 'soft') {
       clearInterval(this.softIntervalId);
       if(!this.state.restart) {
+        console.log('soft-------', this.state)
         const softCount = this.state.softCount;
         const countDown = this.countDown;
         this.softIntervalId = setInterval(function(){countDown(softCount)}, 1000);
@@ -116,6 +124,7 @@ export default class extends Component {
     if (this.setTimer.eggType === 'medium') {
       clearInterval(this.mediumIntervalId);
       if(!this.state.restart) {
+        console.log('medium-----', this.state)
         const mediumCount = this.state.mediumCount;
         const countDown= this.countDown;
         this.mediumIntervalId = setInterval(function(){countDown(mediumCount)}, 1000);
@@ -138,11 +147,13 @@ export default class extends Component {
       isHidden: false,
       restart: !prevState.restart,
       softMinutes: .05,
-      softCount: .05 * min
+      softCount: .05 * min,
     }))
     this.setTimer.eggType = 'soft';
     setTimeout(this.setTimer, 100)
-
+    setTimeout(() => {
+      console.log('start s----',this.state)
+    }, 2000)
   }
 
   mediumEgg = () => {
@@ -155,6 +166,9 @@ export default class extends Component {
     }))
     this.setTimer.eggType='medium';
     setTimeout(this.setTimer, 100)
+    setTimeout(() => {
+      console.log('start m----',this.state)
+    }, 2000)
   }
 
   hardEgg = () => {
@@ -167,6 +181,9 @@ export default class extends Component {
     }))
     this.setTimer.eggType='hard';
     setTimeout(this.setTimer, 100)
+    setTimeout(() => {
+      console.log('start h----',this.state)
+    }, 2000)
   }
 
   render () {
@@ -309,7 +326,8 @@ const styles = {
     // alignItems: 'center',
     // width,
     // height,
-    alignItems: 'center'
+    alignItems: 'center',
+    zIndex: 1
     
   },
   timeContainer: {
