@@ -215,9 +215,10 @@ export default class extends Component {
                resizeMode='center'
              />
               <Text style={styles.text}>soft</Text> 
-              <Button
+              <Button style={styles.button}
                 onPress={this.softEgg}
                 title={this.state.restart ? 'start' : 'restart'} 
+                accessibilityLabel="soft boiled timer"
               />
               <View style={styles.timeContainer}>
                 <Text style={styles.title}>{this.clock(this.state.softCount)}</Text>
@@ -230,10 +231,12 @@ export default class extends Component {
                 source={require('./img/2.png')}
                 resizeMode='center'
               />
-               <Text style={styles.text}>med</Text> 
+               <Text style={styles.text}>medium</Text> 
               <Button 
                 title={this.state.restart ? 'start' : 'restart'} 
                 onPress={this.mediumEgg}
+                accessibilityLabel="medium boiled timer"
+                
               />
 
 
@@ -251,6 +254,7 @@ export default class extends Component {
               <Button
                 onPress={this.hardEgg}
                 title={this.state.restart ? 'start' : 'restart'} 
+                accessibilityLabel="hard boiled timer"
               />
                 {/* style={styles.text}
                 title="soft"
@@ -284,8 +288,8 @@ const styles = {
   },
   text: {
     textAlign: 'center',
-    fontSize: 18,
-    marginTop: 200,
+    fontSize: 10,
+    // marginTop: 200,
   },
   image: {
     // alignItems: 'center',
@@ -300,6 +304,16 @@ const styles = {
     justifyContent: 'space-between',
     // height: 39,
     // width: 34
+  },
+  title: {
+    fontWeight: 'bold',
+    fontSize: 75,
+    color: '#AED6F1'  
+  },
+  button: {
+    width: 30,
+    height: 45,
+    borderRadius: 5
   }
 }
 
