@@ -70,7 +70,7 @@ export default class extends Component {
     if(!this.state.mediumCount) {
       this.startVibrating();
       clearInterval(this.mediumIntervalId);
-      alert("");
+      // alert("");
       return false;  
     }
     this.setState(prevState => ({
