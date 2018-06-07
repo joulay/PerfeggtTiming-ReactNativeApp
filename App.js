@@ -17,7 +17,7 @@ export default class extends Component {
       minutes: null,
       count: null,
       isWorkTimer: true,
-      isPaused: true,
+      restart: true,
       isHidden: true
     }
   }
@@ -39,15 +39,22 @@ export default class extends Component {
     }))
   }
 
+  reset = () => {
+    this.setState(prevState => ({
+      count: this.state.minutes * min
+    }))
+  }
+
   softEgg = () => {
     this.setState(prevState => ({
       isWorkTimer: !prevState.isWorkTimer,
       isHidden: false,
+      restart: !prevState.restart,
       minutes: 4,
       count: 4 * min
     }))
     clearInterval(this.intervalId);
-    if(this.state.isPaused) {
+    if(this.state.restart) {
       this.intervalId = setInterval(this.countDown, 1000);
     }
   }
@@ -60,7 +67,7 @@ export default class extends Component {
       count: 7 * min
     }))
     clearInterval(this.intervalId);
-    if(this.state.isPaused) {
+    if(this.state.restart) {
       this.intervalId = setInterval(this.countDown, 1000);
     }
   }
@@ -73,19 +80,10 @@ export default class extends Component {
       count: 11 * min
     }))
     clearInterval(this.intervalId);
-    if(this.state.isPaused) {
+    if(this.state.restart) {
       this.intervalId = setInterval(this.countDown, 1000);
     }
   }
-  // state = {
-  //   isHidden: true
-  // }
-  // showTimer = () => {
-  //   this.setState({
-  //     isHidden: false
-  //   })
-  // }
-
 
   render () {
     return (
@@ -124,8 +122,8 @@ export default class extends Component {
               shadowColor="white"
               textStyle={{fontSize:20}}
               onTimeElapsed={()=>console.log('HERRO')}
-            />   */}
-            {/* <CountDown
+            />  
+            <CountDown
               until={10}
               onFinish={() => alert('')}
               onPress={() => alert('hello')}
@@ -138,14 +136,9 @@ export default class extends Component {
             /> */}
 
             <Text style={styles.text}>soft boil</Text> 
-            {/* <Button 
-              title="^"
-              onPress={this.softEgg}
-              disabled={!this.state.isWorkTimer}  
-            /> */}
             <Button
               onPress={this.softEgg}
-              title={this.state.isPaused ? 'start' : 'pause'} 
+              title={this.state.restart ? 'start' : 'restart'} 
             />
               {/* style={styles.text}
               title="soft"
@@ -162,18 +155,24 @@ export default class extends Component {
               resizeMode='cover'
             /> */}
             <Button 
-              title=">"
+              title={this.state.restart ? 'start' : 'restart'} 
               onPress={this.mediumEgg}
               disabled={!this.state.isWorkTimer} 
             />
+            <View style={styles.timeContainer}>
+              <Text style={styles.title}>{this.clock(this.state.count)}</Text>
+            </View>
           </View>
           <View>
             <Text style={styles.text}>hard boiled</Text>
             <Button 
-              title=">"
+              title={this.state.restart ? 'start' : 'restart'} 
               onPress={this.hardEgg}
               disabled={!this.state.isWorkTimer} 
             />
+            <View style={styles.timeContainer}>
+              <Text style={styles.title}>{this.clock(this.state.count)}</Text>
+            </View>
           </View>
         
 
