@@ -71,7 +71,7 @@ export default class extends Component {
     if(this.state.mediumCount===0) {
       this.startVibrating();
       clearInterval(this.mediumIntervalId);
-      alert("");
+      alert("med");
       return false;  
     }
     this.setState(prevState => ({
@@ -81,7 +81,7 @@ export default class extends Component {
     if(this.state.hardCount===0) {
       this.startVibrating();
       clearInterval(this.hardIntervalId);
-      alert("");
+      alert("h");
       return false;  
     }
     this.setState(prevState => ({
@@ -141,8 +141,8 @@ export default class extends Component {
       isWorkTimer: !prevState.isWorkTimer,
       isHidden: false,
       restart: !prevState.restart,
-      mediumMinutes: .2,
-      mediumCount: .2 * min
+      mediumMinutes: .05,
+      mediumCount: .05 * min
     }))
     this.setTimer.eggType='medium';
     setTimeout(this.setTimer, 100)
@@ -162,10 +162,10 @@ export default class extends Component {
 
   render () {
     return (
-      <TouchableOpacity 
-        onPress={this.stopVibration} 
-        disabled={!this.state.isVibrating} 
-        style={styles.container}>
+      // <TouchableOpacity 
+      //   onPress={this.stopVibration} 
+      //   disabled={!this.state.isVibrating} 
+      //   style={styles.container}>
 
        <View style={styles.container}>
           
@@ -275,7 +275,7 @@ export default class extends Component {
           
         
         </View>
-      </TouchableOpacity>
+      // </TouchableOpacity>
     )
   }
 }
