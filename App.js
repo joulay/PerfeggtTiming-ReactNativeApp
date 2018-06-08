@@ -3,7 +3,8 @@ import { View, Image, Dimensions, Text, Button, Vibration, TouchableOpacity } fr
 import Swiper from 'react-native-swiper'
 import { createStackNavigator } from 'react-navigation';
 const min = 60;
-const PATTERN = [1000, 2000, 3000]
+const DURATION = 10000;
+const PATTERN = [1000, 2000, 3000];
 
 
 export default class extends Component {
@@ -35,11 +36,10 @@ export default class extends Component {
   }
 
   startVibrating = () => {
-    console.log('made it')
     this.setState(prevState => ({
       isVibrating: true
     }))
-    Vibration.vibrate(PATTERN, true);
+    Vibration.vibrate(DURATION);
   }
 
   stopVibration =() => {
@@ -86,7 +86,8 @@ export default class extends Component {
     }
 
     if(this.state.hardCount === 0) {
-      this.startVibrating();
+      Vibration.vibrate(PATTERN);
+      // this.startVibrating();
       clearInterval(this.hardIntervalId);
       alert("hello");
       this.setState({
