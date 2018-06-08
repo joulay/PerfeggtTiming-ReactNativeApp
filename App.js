@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { View, Image, Dimensions, Text, Button, Vibration, TouchableOpacity } from 'react-native'
 import Swiper from 'react-native-swiper'
 import { createStackNavigator } from 'react-navigation';
-import CountDown from 'react-native-countdown-component';
 const min = 60;
 const PATTERN = [1000, 2000, 3000]
 
