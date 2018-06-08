@@ -2,12 +2,8 @@ import React, { Component } from 'react'
 import { View, Image, Dimensions, Text, Button, Vibration, TouchableOpacity } from 'react-native'
 import Swiper from 'react-native-swiper'
 import { createStackNavigator } from 'react-navigation';
-import CountdownCircle from 'react-native-countdown-circle';
 import CountDown from 'react-native-countdown-component';
-import { vibrate } from './utils/vibrate'
-// const { width, height } = Dimensions.get('window');
 const min = 60;
-const DURATION = 10000
 const PATTERN = [1000, 2000, 3000]
 
 
@@ -43,7 +39,7 @@ export default class extends Component {
     this.setState(prevState => ({
       isVibrating: true
     }))
-    Vibration.vibrate(DURATION);
+    Vibration.vibrate(PATTERN);
   }
 
   stopVibration =() => {
