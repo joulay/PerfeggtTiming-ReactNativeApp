@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Image, Dimensions, Text, Button, Vibration, TouchableOpacity } from 'react-native'
-import Swiper from 'react-native-swiper'
 import { createStackNavigator } from 'react-navigation';
+import Swiper from 'react-native-swiper'
 const min = 60;
 const DURATION = 10000;
 const PATTERN = [1000, 2000, 3000];
@@ -83,10 +83,9 @@ export default class extends Component {
     }
 
     if(this.state.hardCount === 0) {
-      Vibration.vibrate(PATTERN);
-      // this.startVibrating();
+      this.startVibrating();
       clearInterval(this.hardIntervalId);
-      alert("hello");
+      alert("");
       this.setState({
         hardCount:null,
       }) 
