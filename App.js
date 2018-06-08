@@ -143,8 +143,8 @@ export default class extends Component {
       isWorkTimer: !prevState.isWorkTimer,
       isHidden: false,
       restart: !prevState.restart,
-      softMinutes: .05,
-      softCount: .05 * min,
+      softMinutes: 4,
+      softCount: 4 * min,
     }))
     this.setTimer.eggType = 'soft';
     setTimeout(this.setTimer, 100)
@@ -155,8 +155,8 @@ export default class extends Component {
       isWorkTimer: !prevState.isWorkTimer,
       isHidden: false,
       restart: !prevState.restart,
-      mediumMinutes: .05,
-      mediumCount: .05 * min
+      mediumMinutes: 7,
+      mediumCount: 7 * min
     }))
     this.setTimer.eggType='medium';
     setTimeout(this.setTimer, 100)
@@ -167,8 +167,8 @@ export default class extends Component {
       isWorkTimer: !prevState.isWorkTimer,
       isHidden: false,
       restart: !prevState.restart,
-      hardMinutes: .05,
-      hardCount: .05 * min
+      hardMinutes: 11,
+      hardCount: 11 * min
     }))
     this.setTimer.eggType='hard';
     setTimeout(this.setTimer, 100)
