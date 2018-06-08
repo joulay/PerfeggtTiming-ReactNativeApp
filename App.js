@@ -5,7 +5,7 @@ import { createStackNavigator } from 'react-navigation';
 import CountdownCircle from 'react-native-countdown-circle';
 import CountDown from 'react-native-countdown-component';
 import { vibrate } from './utils/vibrate'
-const { width, height } = Dimensions.get('window');
+// const { width, height } = Dimensions.get('window');
 const min = 60;
 const DURATION = 10000
 const PATTERN = [1000, 2000, 3000]
@@ -286,11 +286,11 @@ const styles = {
     flex: 1,
     backgroundColor: 'transparent',
     // alignItems: 'stretch',
-    // justifyContent: 'center'
+    justifyContent: 'center'
   },
   text: {
     textAlign: 'center',
-    fontSize: 10,
+    fontSize: 14,
     color: '#D5DBDB',
     // marginTop: 40,
   },
@@ -300,14 +300,15 @@ const styles = {
     // position: 'absolute',
     // alignItems: 'center',
     // zIndex: 1,
-    // opacity: 0.8
+    // opacity: 0.8,
     flexGrow:1,
     height: null,
     width: null,
     alignItems: 'center',
-    // justifyContent: 'center'
-    marginTop: 150,
-    marginBottom: 10
+    justifyContent: 'center',
+    marginTop: 90,
+    // marginBottom: 50
+    paddingBottom: 75
   },
   timeContainer: {
     flex: 1,
