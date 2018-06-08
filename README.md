@@ -10,12 +10,12 @@ It comes with the options of hard, medium and soft boiled.
 
 
 ### Technologies:
--Javascript
--React
--React Native
--React Native Swiper
--React Native Vibration
--Expo
+- Javascript
+- React
+- React Native
+- React Native Swiper
+- React Native Vibration
+- Expo
 
 
 
