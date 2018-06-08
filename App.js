@@ -61,13 +61,13 @@ export default class extends Component {
     if(this.state.softCount === 0) {
       this.startVibrating();
       clearInterval(this.softIntervalId);
-      alert("soft");
+      alert("");
       this.setState({
         softCount:null,
       })
       return false;  
     }
-    console.log('countdown',this.state)
+    // console.log('countdown',this.state)
     if(this.setTimer.eggType === 'soft') {
       this.setState(prevState => ({
         softCount: prevState.softCount - 1,
@@ -77,7 +77,7 @@ export default class extends Component {
     if(this.state.mediumCount === 0) {
       this.startVibrating();
       clearInterval(this.mediumIntervalId);
-      alert("med");
+      alert("");
       this.setState({
         mediumCount:null,
       })
@@ -92,7 +92,7 @@ export default class extends Component {
     if(this.state.hardCount === 0) {
       this.startVibrating();
       clearInterval(this.hardIntervalId);
-      alert("h");
+      alert("");
       this.setState({
         hardCount:null,
       }) 
@@ -115,7 +115,7 @@ export default class extends Component {
     if(this.setTimer.eggType === 'soft') {
       clearInterval(this.softIntervalId);
       if(!this.state.restart) {
-        console.log('soft-------', this.state)
+        // console.log('soft-------', this.state)
         const softCount = this.state.softCount;
         const countDown = this.countDown;
         this.softIntervalId = setInterval(function(){countDown(softCount)}, 1000);
@@ -124,7 +124,7 @@ export default class extends Component {
     if (this.setTimer.eggType === 'medium') {
       clearInterval(this.mediumIntervalId);
       if(!this.state.restart) {
-        console.log('medium-----', this.state)
+        // console.log('medium-----', this.state)
         const mediumCount = this.state.mediumCount;
         const countDown= this.countDown;
         this.mediumIntervalId = setInterval(function(){countDown(mediumCount)}, 1000);
@@ -151,9 +151,6 @@ export default class extends Component {
     }))
     this.setTimer.eggType = 'soft';
     setTimeout(this.setTimer, 100)
-    setTimeout(() => {
-      console.log('start s----',this.state)
-    }, 2000)
   }
 
   mediumEgg = () => {
@@ -166,9 +163,6 @@ export default class extends Component {
     }))
     this.setTimer.eggType='medium';
     setTimeout(this.setTimer, 100)
-    setTimeout(() => {
-      console.log('start m----',this.state)
-    }, 2000)
   }
 
   hardEgg = () => {
@@ -181,9 +175,9 @@ export default class extends Component {
     }))
     this.setTimer.eggType='hard';
     setTimeout(this.setTimer, 100)
-    setTimeout(() => {
-      console.log('start h----',this.state)
-    }, 2000)
+    // setTimeout(() => {
+    //   console.log('start h----',this.state)
+    // }, 2000)
   }
 
   render () {
@@ -218,56 +212,31 @@ export default class extends Component {
             }}
             loop={false}>
             <View style={styles.slide}>
-              {/* <CountdownCircle
-                style={styles.countdown}
-                seconds={5}
-                radius={70} 
-                borderWidth={3}
-                color="#E8F8F5"
-                bgColor="white"
-                shadowColor="white"
-                textStyle={{fontSize:20}}
-                onTimeElapsed={()=>console.log('HERRO')}
-              />  
-              <CountDown
-                until={10}
-                onFinish={() => alert('')}
-                onPress={() => alert('hello')}
-                size={20}
-                timeToShow={['M','S']}
-                digitBgColor={'#F9E79F'}
-                digitTxtColor={'white'} //time
-                timeTxtColor={'white'} //min sec
-                size={25}
-              /> */}
-
-
-              <Image
-                style={styles.image}
-                source={require('./img/1.png')}
-                resizeMode='center'
-              />
-              <Text style={styles.text}>soft</Text> 
-              <Button style={styles.button}
-                onPress={this.softEgg}
+            <Image
+               style={styles.image}
+               source={require('./img/final03.png')}
+               resizeMode='center'
+             />
+              <Text style={styles.text}>hard boiled</Text> 
+              <Button
+                onPress={this.hardEgg}
                 title={this.state.restart ? 'start' : 'restart'} 
-                accessibilityLabel="soft boiled timer"
+                accessibilityLabel="hard boiled timer"
               />
               <View style={styles.timeContainer}>
-                {this.state.softCount && <Text style={styles.title}>{this.clock(this.state.softCount)}</Text>}
+                {this.state.hardCount && <Text style={styles.title}>{this.clock(this.state.hardCount)}</Text>}
               </View>
             </View>
-
             
 
             <View style={styles.slide}>
 
               <Image
                 style={styles.image}
-                source={require('./img/2.png')}
+                source={require('./img/final02.png')}
                 resizeMode='center'
               />
-               <Text style={styles.text}>medium</Text> 
+               <Text style={styles.text}>medium boiled</Text> 
               <Button 
                 title={this.state.restart ? 'start' : 'restart'} 
                 onPress={this.mediumEgg}
@@ -279,21 +248,22 @@ export default class extends Component {
               </View>
             </View>
             <View style={styles.slide}>
-            <Image
-               style={styles.image}
-               source={require('./img/3.png')}
-               resizeMode='center'
-             />
-              <Text style={styles.text}>hard</Text> 
-              <Button
-                onPress={this.hardEgg}
+              <Image
+                style={styles.image}
+                source={require('./img/final01.png')}
+                resizeMode='center'
+              />
+              <Text style={styles.text}>soft boiled</Text> 
+              <Button style={styles.button}
+                onPress={this.softEgg}
                 title={this.state.restart ? 'start' : 'restart'} 
-                accessibilityLabel="hard boiled timer"
+                accessibilityLabel="soft boiled timer"
               />
               <View style={styles.timeContainer}>
-                {this.state.hardCount && <Text style={styles.title}>{this.clock(this.state.hardCount)}</Text>}
+                {this.state.softCount && <Text style={styles.title}>{this.clock(this.state.softCount)}</Text>}
               </View>
             </View>
+
           
           
 
@@ -314,21 +284,30 @@ const styles = {
   },
   slide: {
     flex: 1,
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    // alignItems: 'stretch',
+    // justifyContent: 'center'
   },
   text: {
     textAlign: 'center',
     fontSize: 10,
-    color: '#D5DBDB'
-    // marginTop: 200,
+    color: '#D5DBDB',
+    // marginTop: 40,
   },
   image: {
-    // alignItems: 'center',
     // width,
     // height,
+    // position: 'absolute',
+    // alignItems: 'center',
+    // zIndex: 1,
+    // opacity: 0.8
+    flexGrow:1,
+    height: null,
+    width: null,
     alignItems: 'center',
-    zIndex: 1
-    
+    // justifyContent: 'center'
+    marginTop: 150,
+    marginBottom: 10
   },
   timeContainer: {
     flex: 1,
@@ -340,12 +319,15 @@ const styles = {
   title: {
     fontWeight: 'bold',
     fontSize: 75,
-    color: '#AED6F1'  
+    color: '#AED6F1',  
+    zIndex: 2,
+    textAlign: 'center'
+
   },
-  button: {
-    width: 30,
-    height: 45,
-    borderRadius: 5
-  }
+  // button: {
+  //   width: 30,
+  //   height: 45,
+  //   borderRadius: 5
+  // }
 }
 
