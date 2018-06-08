@@ -27,12 +27,9 @@ export default class extends Component {
   clock = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
-
     const ourMinutes = minutes > 9 ? minutes : `0${minutes}`;
     const ourSeconds = seconds > 9 ? seconds : `0${seconds}`;
-
     return `${ourMinutes} ${ourSeconds}`;
-
   }
 
   startVibrating = () => {
@@ -56,7 +53,7 @@ export default class extends Component {
   countDown = () => {
     if(this.state.softCount === 0) {
       this.startVibrating();
-      clearInterval(this.softIntervalId);
+      clearInterval(this.softIntervalId); 
       alert("");
       this.setState({
         softCount:null,
@@ -183,9 +180,7 @@ export default class extends Component {
         onPress={this.stopVibration} 
         disabled={!this.state.isVibrating} 
         style={styles.container}>
-
        <View style={styles.container}>
-          
           <Swiper 
             style={styles.wrapper}
             dot={<View style={{
@@ -224,10 +219,7 @@ export default class extends Component {
                 {this.state.hardCount && <Text style={styles.title}>{this.clock(this.state.hardCount)}</Text>}
               </View>
             </View>
-            
-
             <View style={styles.slide}>
-
               <Image
                 style={styles.image}
                 source={require('./img/final02.png')}
@@ -238,7 +230,6 @@ export default class extends Component {
                 title={this.state.restart ? 'start' : 'restart'} 
                 onPress={this.mediumEgg}
                 accessibilityLabel="medium boiled timer"
-                
               />
               <View style={styles.timeContainer}>
                 {this.state.mediumCount && <Text style={styles.title}>{this.clock(this.state.mediumCount)}</Text>}
@@ -260,13 +251,7 @@ export default class extends Component {
                 {this.state.softCount && <Text style={styles.title}>{this.clock(this.state.softCount)}</Text>}
               </View>
             </View>
-
-          
-          
-
           </Swiper>
-          
-        
         </View>
       </TouchableOpacity>
     )
@@ -282,37 +267,26 @@ const styles = {
   slide: {
     flex: 1,
     backgroundColor: 'transparent',
-    // alignItems: 'stretch',
     justifyContent: 'center'
   },
   text: {
     textAlign: 'center',
     fontSize: 14,
     color: '#D5DBDB',
-    // marginTop: 40,
   },
   image: {
-    // width,
-    // height,
-    // position: 'absolute',
-    // alignItems: 'center',
-    // zIndex: 1,
-    // opacity: 0.8,
     flexGrow:1,
     height: null,
     width: null,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 90,
-    // marginBottom: 50
     paddingBottom: 75
   },
   timeContainer: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-between',
-    // height: 39,
-    // width: 34
   },
   title: {
     fontWeight: 'bold',
@@ -320,12 +294,6 @@ const styles = {
     color: '#AED6F1',  
     zIndex: 2,
     textAlign: 'center'
-
-  },
-  // button: {
-  //   width: 30,
-  //   height: 45,
-  //   borderRadius: 5
-  // }
+  }
 }
 
