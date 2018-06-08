@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { View, Image, Dimensions, Text, Button, Vibration, TouchableOpacity } from 'react-native'
-import { createStackNavigator } from 'react-navigation';
 import Swiper from 'react-native-swiper'
 const min = 60;
 const DURATION = 10000;
@@ -280,7 +279,8 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 90,
-    paddingBottom: 75
+    paddingBottom: 75,
+    marginRight: 22
   },
   timeContainer: {
     flex: 1,
