@@ -3,9 +3,11 @@
 Perfeggt Timing is a mobile app utilizing React Native to assist with cooking eggs.
 It comes with the options of hard, medium and soft boiled. 
 
-<img width="441" alt="screen shot 2018-06-08 at 1 12 37 pm" src="https://user-images.githubusercontent.com/24361293/41179113-67c09060-6b1e-11e8-8c7e-fc6a85d5e3a7.png">
-<img width="430" alt="screen shot 2018-06-08 at 1 13 39 pm" src="https://user-images.githubusercontent.com/24361293/41179137-7b998c18-6b1e-11e8-81e9-3d566f2374cf.png">
-<img width="430" alt="screen shot 2018-06-08 at 1 15 49 pm" src="https://user-images.githubusercontent.com/24361293/41179141-8237134c-6b1e-11e8-86ca-3dc0e8943d4e.png">
+<img width="501" alt="screen shot 2018-06-08 at 1 43 34 pm" src="https://user-images.githubusercontent.com/24361293/41180274-8ae20232-6b22-11e8-80f3-d4986071a560.png">
+<img width="499" alt="screen shot 2018-06-08 at 1 45 19 pm" src="https://user-images.githubusercontent.com/24361293/41180289-95d75d54-6b22-11e8-9327-bea3395e8ddd.png">
+<img width="501" alt="screen shot 2018-06-08 at 1 44 49 pm" src="https://user-images.githubusercontent.com/24361293/41180302-9ccbc320-6b22-11e8-81ad-2dda11079660.png">
+
+
 
 ###Technologies:
 -Javascript
