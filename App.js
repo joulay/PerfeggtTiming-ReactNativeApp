@@ -35,10 +35,11 @@ export default class extends Component {
   }
 
   startVibrating = () => {
+    console.log('made it')
     this.setState(prevState => ({
       isVibrating: true
     }))
-    Vibration.vibrate(PATTERN);
+    Vibration.vibrate(PATTERN, true);
   }
 
   stopVibration =() => {
@@ -87,7 +88,7 @@ export default class extends Component {
     if(this.state.hardCount === 0) {
       this.startVibrating();
       clearInterval(this.hardIntervalId);
-      alert("");
+      alert("hello");
       this.setState({
         hardCount:null,
       }) 
